@@ -13,6 +13,7 @@ signature: The artist is named as F. Byers on the original gallery label on the 
 verso: The original El Gatito Gallery label is on the back, with the title, artist, and medium (oil) handwritten.
 provenance: Sold through El Gatito Gallery, Los Gatos, California, as shown by the gallery's original label on the back. Later ownership has not been recorded.
 price: 300
+prominence: 3
 status: available
 ownership: owned
 featured: false

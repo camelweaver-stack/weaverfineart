@@ -7,20 +7,21 @@ artist: Massimiliano "Max" Balletti
 artistSlug: max-balletti
 medium: Pen and watercolor with watercolor pencil on textured paper
 region: Other
-imageWidthIn: 8.3
-imageHeightIn: 11.7
-condition: Unframed, kept in a plastic sleeve. Size is approximate (about A4, 8.3 × 11.7 in).
-signature: Signed "M BALLETTI" lower right.
+imageWidthIn: 11.7
+imageHeightIn: 8.3
+condition: Unframed, kept in a plastic sleeve. Size is approximate (about A4, 11.7 × 8.3 in, landscape).
+signature: Signed "M BALLETTI" along the right edge; it reads vertically with the street scene upright.
 verso: The artist's "Made in Rome" label is on the back.
 provenance: Earlier ownership has not been recorded.
 price: 150
+prominence: 4
 status: available
 ownership: owned
 featured: false
 dateAdded: 2026-10-31
 images:
   - file: ./balletti-street-front.jpg
-    alt: Italian street scene by Max Balletti, a loose pen and watercolor sketch of yellow buildings with blue windows and red-striped shutters, red café umbrellas, green climbing plants, and shop signs, signed M BALLETTI lower right.
+    alt: Italian street scene by Max Balletti, a loose pen and watercolor sketch of yellow buildings with blue windows and red-striped shutters, red café umbrellas, green climbing plants, and shop signs, signed along the right edge.
     caption: The full sheet, photographed in its plastic sleeve.
     placeholder: false
   - file: ./balletti-street-signature.jpg

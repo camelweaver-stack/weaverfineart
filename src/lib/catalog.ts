@@ -11,7 +11,7 @@ export async function getCatalog() {
 
   const publishedWorks = works
     .filter((work) => !work.data.draft)
-    .sort((a, b) => b.data.dateAdded.localeCompare(a.data.dateAdded) || a.data.title.localeCompare(b.data.title));
+    .sort(byProminence);
 
   for (const work of publishedWorks) {
     if (!artistById.has(work.data.artistSlug)) {
@@ -30,4 +30,14 @@ export function isListed(work: CollectionEntry<"works">): boolean {
 
 export function worksByArtist(works: CollectionEntry<"works">[], artistId: string) {
   return works.filter((work) => work.data.artistSlug === artistId);
+}
+
+/** Order of prominence: 1 is the most prominent. Used everywhere works are listed. */
+export function byProminence(a: CollectionEntry<"works">, b: CollectionEntry<"works">) {
+  return a.data.prominence - b.data.prominence || a.data.title.localeCompare(b.data.title, "en");
+}
+
+/** Newest first. Used only by the sold archive. */
+export function byDateAdded(a: CollectionEntry<"works">, b: CollectionEntry<"works">) {
+  return (b.data.soldOn ?? b.data.dateAdded).localeCompare(a.data.soldOn ?? a.data.dateAdded) || a.data.title.localeCompare(b.data.title, "en");
 }

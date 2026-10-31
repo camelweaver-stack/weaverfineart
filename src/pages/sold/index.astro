@@ -1,10 +1,10 @@
 ---
 import Base from "../../layouts/Base.astro";
 import WorkFilters from "../../components/WorkFilters.astro";
-import { getCatalog } from "../../lib/catalog";
+import { getCatalog, byDateAdded } from "../../lib/catalog";
 
 const { works } = await getCatalog();
-const sold = works.filter((work) => work.data.status === "sold");
+const sold = works.filter((work) => work.data.status === "sold").sort(byDateAdded);
 const title = "Sold Archive | Weaver Fine Art";
 const description =
   "Works sold by Weaver Fine Art stay listed, with artist, title, and catalog details. A permanent archive for collectors researching American regional art.";

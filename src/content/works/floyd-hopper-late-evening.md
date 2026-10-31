@@ -16,6 +16,7 @@ signature: Signed lower right.
 verso: The verso carries a titled inscription.
 provenance: Earlier ownership has not yet been recorded.
 price: 1500
+prominence: 1
 status: available
 ownership: owned
 featured: true

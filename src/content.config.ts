@@ -40,6 +40,7 @@ const works = defineCollection({
         ownership: z.enum(["owned", "consigned"]).default("owned"),
         status: z.enum(["available", "hold", "sold"]),
         soldOn: dateField.optional(),
+        prominence: z.number().int().positive(),
         featured: z.boolean().default(false),
         dateAdded: dateField,
         draft: z.boolean().default(false),

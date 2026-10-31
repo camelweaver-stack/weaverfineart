@@ -15,6 +15,7 @@ condition: Framed under glass in a wood frame with a navy mat and gold fillet. T
 signature: Signed and dated lower right, "Eileen M. Smith 1975".
 provenance: Earlier ownership has not been recorded.
 price: 500
+prominence: 2
 status: available
 ownership: owned
 featured: false

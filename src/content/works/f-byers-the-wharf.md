@@ -1,5 +1,4 @@
 ---
-# TODO: Confirm the size with a tape measure. 12 x 16 in is approximate.
 # TODO: Nothing is known about F. Byers. Do not add biography without a source.
 
 title: The Wharf
@@ -7,13 +6,13 @@ artist: F. Byers
 artistSlug: f-byers
 medium: Oil on canvas
 region: Other
-imageWidthIn: 16
-imageHeightIn: 12
-condition: Oil on stretched canvas in a thin black frame. Size is approximate (about 12 × 16 in), not yet confirmed by measurement.
+imageWidthIn: 18.5
+imageHeightIn: 14.5
+condition: Oil on stretched canvas in a thin black frame.
 signature: The artist is named as F. Byers on the original gallery label on the back.
 verso: The original El Gatito Gallery label is on the back, with the title, artist, and medium (oil) handwritten.
 provenance: Sold through El Gatito Gallery, Los Gatos, California, as shown by the gallery's original label on the back. Later ownership has not been recorded.
-price: 295
+price: 300
 status: available
 ownership: owned
 featured: false

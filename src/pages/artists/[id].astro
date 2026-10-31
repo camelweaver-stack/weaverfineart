@@ -1,0 +1,106 @@
+---
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import WorkCard from "../../components/WorkCard.astro";
+import { getCatalog, worksByArtist } from "../../lib/catalog";
+import { breadcrumbJsonLd, personJsonLd } from "../../lib/schema";
+
+export async function getStaticPaths() {
+  const { artists, works } = await getCatalog();
+  return artists.map((artist) => ({
+    params: { id: artist.id },
+    props: { artist, works: worksByArtist(works, artist.id) },
+  }));
+}
+
+const { artist, works } = Astro.props;
+const { Content } = await render(artist);
+const available = works.filter((work) => work.data.status !== "sold");
+const sold = works.filter((work) => work.data.status === "sold");
+const title = `${artist.data.name} (${artist.data.lifeDates}) | Weaver Fine Art`;
+const epithet = artist.data.epithet
+  ? `, ${artist.data.epithet.charAt(0).toLowerCase()}${artist.data.epithet.slice(1)}`
+  : "";
+const description = `${artist.data.name} (${artist.data.lifeDates})${epithet}. Biography, available works, and sold record at Weaver Fine Art in Aledo, Texas.`;
+const jsonLd = [
+  personJsonLd(artist),
+  breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Artists", path: "/artists/" },
+    { name: artist.data.name, path: `/artists/${artist.id}/` },
+  ]),
+];
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Artists", href: "/artists/" }, { name: artist.data.name }]} />
+  <div class="wrap artist-layout">
+    <article>
+      <header class="artist-header">
+        <p class="kicker">{artist.data.region}{artist.data.birthPlace ? ` · Born ${artist.data.birthPlace}` : ""}</p>
+        <h1>{artist.data.name}</h1>
+        <p class="epithet">{artist.data.lifeDates}{artist.data.epithet ? ` · ${artist.data.epithet}` : ""}</p>
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+      {
+        artist.data.sources.length > 0 && (
+          <section class="sources" aria-labelledby="sources-heading">
+            <h2 id="sources-heading">Sources</h2>
+            <p>
+              Life dates, training, and career follow the published source below. Where the gallery's own notes add a
+              date, the biography says so.
+            </p>
+            <ul>
+              {artist.data.sources.map((source) => (
+                <li>
+                  <a href={source.url}>{source.title}</a>
+                  {source.author ? `, ${source.author}` : ""}
+                  {source.publisher ? `, ${source.publisher}` : ""}
+                  {source.date ? ` (${source.date})` : ""}.
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+    </article>
+    <aside>
+      <section class="related-block" aria-labelledby="available-heading">
+        <h2 id="available-heading">Available</h2>
+        {
+          available.length === 0 ? (
+            <p class="empty-note">No works by {artist.data.name} are available right now.</p>
+          ) : (
+            <div class="card-grid">
+              {available.map((work) => (
+                <WorkCard work={work} heading="h3" />
+              ))}
+            </div>
+          )
+        }
+      </section>
+      <section class="related-block" aria-labelledby="sold-heading">
+        <h2 id="sold-heading">Sold</h2>
+        {
+          sold.length === 0 ? (
+            <p class="empty-note">No recorded sales of {artist.data.name} on this site yet. Sold works stay listed here.</p>
+          ) : (
+            <div class="card-grid">
+              {sold.map((work) => (
+                <WorkCard work={work} heading="h3" />
+              ))}
+            </div>
+          )
+        }
+      </section>
+      <section class="cta-panel related-block">
+        <h2>Want a work by {artist.data.name}?</h2>
+        <p>Join the want list with the budget, size, and subject you have in mind.</p>
+        <a class="button" href={`/want-list/?artist=${encodeURIComponent(artist.data.name)}`}>Join the want list</a>
+      </section>
+    </aside>
+  </div>
+</Base>

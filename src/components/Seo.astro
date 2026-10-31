@@ -1,0 +1,56 @@
+---
+import { canonicalUrl, SITE } from "../lib/site";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  image = "/og.jpg",
+  imageAlt = "Weaver Fine Art, historic American regional art, Aledo, Texas",
+  imageWidth,
+  imageHeight,
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+const canonical = canonicalUrl(Astro.url.pathname);
+const imageUrl = new URL(image, SITE.url).href;
+const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const width = imageWidth ?? (image === "/og.jpg" ? 1280 : undefined);
+const height = imageHeight ?? (image === "/og.jpg" ? 720 : undefined);
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content={imageAlt} />
+{width && <meta property="og:image:width" content={String(width)} />}
+{height && <meta property="og:image:height" content={String(height)} />}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt} />
+{
+  blocks.map((entry) => (
+    <script type="application/ld+json" set:html={JSON.stringify(entry).replace(/</g, "\\u003c")} />
+  ))
+}

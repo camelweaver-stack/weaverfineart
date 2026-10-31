@@ -1,0 +1,36 @@
+---
+import Base from "../../layouts/Base.astro";
+import WorkFilters from "../../components/WorkFilters.astro";
+import { getCatalog } from "../../lib/catalog";
+
+const { works } = await getCatalog();
+const sold = works.filter((work) => work.data.status === "sold");
+const title = "Sold Archive | Weaver Fine Art";
+const description =
+  "Works sold by Weaver Fine Art stay listed, with artist, title, and catalog details. A permanent archive for collectors researching American regional art.";
+---
+
+<Base title={title} description={description}>
+  <div class="wrap">
+    <header class="page-intro">
+      <p class="kicker">Record</p>
+      <h1>Sold archive</h1>
+      <p>
+        Works that leave the gallery stay listed here. A sold record keeps the artist, the title, and the catalog
+        details public, which helps if you are researching a picture or confirming that a work has already been placed.
+        A sold price appears when the gallery chooses to publish it. The address of each work's page does not change
+        when it sells.
+      </p>
+    </header>
+    {
+      sold.length === 0 ? (
+        <p class="empty-note">
+          Nothing is in the sold archive yet. When a work is marked sold, it leaves the available list and remains on
+          its own page, linked from here.
+        </p>
+      ) : (
+        <WorkFilters works={sold} context="sold" />
+      )
+    }
+  </div>
+</Base>

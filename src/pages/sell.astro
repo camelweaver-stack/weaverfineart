@@ -1,0 +1,123 @@
+---
+import Base from "../layouts/Base.astro";
+import Honeypot from "../components/Honeypot.astro";
+
+const title = "Sell or Consign | Weaver Fine Art";
+const description =
+  "Sell or consign historic American regional art to Weaver Fine Art in Aledo, Texas. Send photographs of the front, back, and signature, plus dimensions and history.";
+---
+
+<Base title={title} description={description}>
+  <div class="wrap">
+    <header class="page-intro">
+      <p class="kicker">Buying and consignments</p>
+      <h1>Sell or consign</h1>
+      <p>
+        Weaver Fine Art buys and accepts consignments of historic American regional art, especially Indiana regionalists
+        and Texas artists. Send photographs of the front, the back, and the signature, along with the dimensions and
+        whatever history you know. A submission starts a conversation. It is not an offer, and it does not by itself
+        mean the gallery will take the work.
+      </p>
+    </header>
+    <form
+      class="form-panel"
+      name="sell"
+      method="POST"
+      action="/thank-you/"
+      enctype="multipart/form-data"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="sell" />
+      <input type="hidden" name="subject" value="Sell or consign submission" />
+      <Honeypot />
+      <div class="form-grid two">
+        <div class="field">
+          <label for="sell-name">Your name</label>
+          <input id="sell-name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="sell-email">Email</label>
+          <input id="sell-email" name="email" type="email" autocomplete="email" required />
+        </div>
+      </div>
+      <div class="field">
+        <label for="sell-phone">Phone <span class="help">(optional)</span></label>
+        <input id="sell-phone" name="phone" type="tel" autocomplete="tel" />
+      </div>
+      <div class="form-grid two">
+        <div class="field">
+          <label for="sell-artist">Artist</label>
+          <input id="sell-artist" name="artist" type="text" required />
+        </div>
+        <div class="field">
+          <label for="sell-title">Title, if known</label>
+          <input id="sell-title" name="title" type="text" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="sell-medium">Medium</label>
+        <input id="sell-medium" name="medium" type="text" placeholder="Watercolor, oil on canvas…" />
+      </div>
+      <fieldset>
+        <legend>Image size, in inches</legend>
+        <div class="form-grid two">
+          <div class="field">
+            <label for="image-width">Width</label>
+            <input id="image-width" name="image-width" type="number" inputmode="decimal" min="0" step="0.25" />
+          </div>
+          <div class="field">
+            <label for="image-height">Height</label>
+            <input id="image-height" name="image-height" type="number" inputmode="decimal" min="0" step="0.25" />
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Frame size, in inches, if framed</legend>
+        <div class="form-grid two">
+          <div class="field">
+            <label for="frame-width">Width</label>
+            <input id="frame-width" name="frame-width" type="number" inputmode="decimal" min="0" step="0.25" />
+          </div>
+          <div class="field">
+            <label for="frame-height">Height</label>
+            <input id="frame-height" name="frame-height" type="number" inputmode="decimal" min="0" step="0.25" />
+          </div>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="asking-price">Asking price, in dollars <span class="help">(optional)</span></label>
+        <input id="asking-price" name="asking-price" type="text" inputmode="decimal" />
+      </div>
+      <div class="field">
+        <label for="sell-history">What you know about the work</label>
+        <textarea id="sell-history" name="history" required></textarea>
+        <p class="help">Previous owners, inscriptions, where it has been. If you do not know, say so.</p>
+      </div>
+      <fieldset>
+        <legend>Photographs</legend>
+        <p class="help" id="photo-help">
+          JPG or PNG. One file in each box. iPhone photos may need to be exported as JPG. The whole form, pictures
+          included, needs to stay under about 8 megabytes.
+        </p>
+        <div class="field">
+          <label for="photo-front">Front</label>
+          <input id="photo-front" name="photo-front" type="file" accept="image/jpeg,image/png,image/webp" aria-describedby="photo-help" />
+        </div>
+        <div class="field">
+          <label for="photo-back">Back</label>
+          <input id="photo-back" name="photo-back" type="file" accept="image/jpeg,image/png,image/webp" />
+        </div>
+        <div class="field">
+          <label for="photo-signature">Signature</label>
+          <input id="photo-signature" name="photo-signature" type="file" accept="image/jpeg,image/png,image/webp" />
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="sell-message">Anything else <span class="help">(optional)</span></label>
+        <textarea id="sell-message" name="message"></textarea>
+      </div>
+      <button class="button" type="submit">Send photographs and details</button>
+    </form>
+  </div>
+</Base>

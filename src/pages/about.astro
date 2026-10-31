@@ -1,0 +1,63 @@
+---
+import Base from "../layouts/Base.astro";
+import { galleryJsonLd } from "../lib/schema";
+import { SITE } from "../lib/site";
+
+const title = "About the Gallery | Weaver Fine Art";
+const description =
+  "Weaver Fine Art is an art dealership in Aledo, Texas, run by Chris Weaver, specializing in historic American regional art. Visits are by appointment.";
+---
+
+<Base title={title} description={description} jsonLd={galleryJsonLd()}>
+  <div class="wrap">
+    <header class="page-intro">
+      <p class="kicker">{SITE.locality}, Texas</p>
+      <h1>About the gallery</h1>
+    </header>
+    <div class="prose">
+      <p>
+        {SITE.dealer} buys, sells, and takes consignments of historic American regional art from {SITE.locality}, Texas.
+        The gallery works by appointment. There is no walk-in schedule.
+      </p>
+      <p>
+        The focus is Indiana regionalist painting, including artists such as Floyd D. Hopper, and Texas artists, along
+        with related American regional work. Listings are written so a collector can see the price, the size, the
+        condition, and what is known of the provenance without having to ask for the basics.
+      </p>
+      <p>
+        A purchase starts with an inquiry. Weaver Fine Art confirms availability, a hold, or an invoice by email. Sending
+        a form does not by itself reserve a work.
+      </p>
+      <p>
+        The gallery does not invent a history for a picture. If a previous owner, a date, or an exhibition is not yet
+        documented, the listing says so.
+      </p>
+      <p>
+        Trade references are available on request. Write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a> to arrange
+        a visit or to ask about a work.
+      </p>
+    </div>
+    <section class="section" aria-labelledby="visit-heading">
+      <h2 id="visit-heading">Visit and correspondence</h2>
+      <dl class="specs">
+        <div>
+          <dt>Dealer</dt>
+          <dd>{SITE.dealer}</dd>
+        </div>
+        <div>
+          <dt>Gallery</dt>
+          <dd>{SITE.name}</dd>
+        </div>
+        <div>
+          <dt>Place</dt>
+          <dd>{SITE.locality}, Texas, by appointment</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${SITE.email}`}>{SITE.email}</a></dd>
+        </div>
+      </dl>
+      <p><a class="button" href="/contact/">Contact the gallery</a></p>
+    </section>
+  </div>
+</Base>

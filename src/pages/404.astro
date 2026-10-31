@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+
+const title = "Page Not Found | Weaver Fine Art";
+const description = "That page is not on the Weaver Fine Art site.";
+---
+
+<Base title={title} description={description} noindex={true}>
+  <div class="wrap">
+    <header class="page-intro">
+      <h1>Page not found</h1>
+      <p>The address may have changed, or the page may never have been here.</p>
+      <p>
+        <a class="button" href="/works/">Available works</a>
+      </p>
+      <p>
+        <a href="/artists/">Artists</a> · <a href="/sold/">Sold archive</a> · <a href="/contact/">Contact</a>
+      </p>
+    </header>
+  </div>
+</Base>

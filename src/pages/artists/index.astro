@@ -1,0 +1,53 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCatalog } from "../../lib/catalog";
+
+const { artists } = await getCatalog();
+const groups = new Map<string, typeof artists>();
+for (const artist of artists) {
+  const letter = artist.data.sortName.charAt(0).toUpperCase();
+  const list = groups.get(letter) ?? [];
+  list.push(artist);
+  groups.set(letter, list);
+}
+
+const title = "Artists | Weaver Fine Art";
+const description =
+  "Artists handled by Weaver Fine Art in Aledo, Texas, beginning with Indiana regionalists such as Floyd D. Hopper. Each page has a biography, available works, and sold works.";
+---
+
+<Base title={title} description={description}>
+  <div class="wrap">
+    <header class="page-intro">
+      <p class="kicker">Index</p>
+      <h1>Artists</h1>
+      <p>
+        One page for each artist: a short biography, what is available, and what has sold. The gallery starts with
+        Indiana regionalists and Texas artists.
+      </p>
+    </header>
+    {
+      [...groups.entries()].map(([letter, group]) => (
+        <section aria-labelledby={`letter-${letter}`}>
+          <h2 class="letter" id={`letter-${letter}`}>
+            {letter}
+          </h2>
+          <ul class="artist-index">
+            {group.map((artist) => (
+              <li>
+                <a href={`/artists/${artist.id}/`}>
+                  <span class="artist-name">{artist.data.name}</span>
+                  <span class="artist-meta">
+                    {artist.data.lifeDates} · {artist.data.region}
+                  </span>
+                </a>
+                <p class="artist-summary">{artist.data.summary}</p>
+                {artist.data.epithet && <p class="artist-meta">{artist.data.epithet}</p>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</Base>

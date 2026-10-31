@@ -150,6 +150,6 @@ export function workDescription(work: CollectionEntry<"works">): string {
       ? `Priced at ${work.data.price} USD.`
       : work.data.status === "sold"
         ? "Sold. Price not published."
-        : "Price on inquiry.";
+        : "Price on request.";
   return `${work.data.title}, ${work.data.medium.toLowerCase()} by ${work.data.artist}. Image ${work.data.imageWidthIn} × ${work.data.imageHeightIn} inches. ${work.data.condition} ${price} Weaver Fine Art, Aledo, Texas.`;
 }

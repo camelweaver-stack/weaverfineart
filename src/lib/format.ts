@@ -1,7 +1,7 @@
 export type Price = number | "Inquire";
 export type WorkStatus = "available" | "hold" | "sold";
 export type SizeBand = "small" | "medium" | "large";
-export type PriceBand = "under-1000" | "1000-5000" | "5000-15000" | "over-15000" | "inquire";
+export type PriceBand = "under-1000" | "1000-5000" | "5000-15000" | "over-15000" | "inquire" | "on-request";
 
 const FRACTIONS: Record<string, string> = {
   "0.25": "¼",
@@ -32,11 +32,12 @@ export function formatPrice(price: Price, status?: WorkStatus): string {
       maximumFractionDigits: 0,
     }).format(price);
   }
+  if (status && status !== "sold") return "Price on request";
   return "Price not published";
 }
 
-export function priceBand(price: Price): PriceBand {
-  if (typeof price !== "number") return "inquire";
+export function priceBand(price: Price, status?: WorkStatus): PriceBand {
+  if (typeof price !== "number") return status && status !== "sold" ? "on-request" : "inquire";
   if (price < 1000) return "under-1000";
   if (price <= 5000) return "1000-5000";
   if (price <= 15000) return "5000-15000";

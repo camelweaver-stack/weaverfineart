@@ -42,25 +42,25 @@ assert(home.includes("https://weaverfineart.com/"), "home canonical host");
 assert(home.includes("ArtGallery"), "home ArtGallery schema");
 assert(home.includes("Join the want list"), "home want-list CTA");
 assert(home.includes("Offer a work"), "home sell CTA");
-assert(home.includes("Every available work shows its price."), "home price promise");
+assert(home.includes("Every work we own shows its price. Consigned works may be priced on request."), "home price promise");
 assert(!home.includes("word Inquire"), "home must not offer Inquire as a price");
 
 const artworkLd = jsonLd(work).find((entry) => entry["@type"] === "VisualArtwork");
 assert(artworkLd, "VisualArtwork schema missing");
 if (artworkLd) {
-  assert(artworkLd.offers && Number(artworkLd.offers.price) === 1200 && artworkLd.offers.priceCurrency === "USD", "Late Evening offer price 1200 USD");
+  assert(artworkLd.offers && Number(artworkLd.offers.price) === 1500 && artworkLd.offers.priceCurrency === "USD", "Late Evening offer price 1500 USD");
   assert(artworkLd.offers.availability === "https://schema.org/InStock", "available work should be InStock");
   assert(artworkLd.artist.name === "Floyd D. Hopper", "artwork artist");
-  assert(artworkLd.width.value === 20.5, "image width");
-  assert(artworkLd.height.value === 29.5, "image height");
+  assert(artworkLd.width.value === 20, "image width");
+  assert(artworkLd.height.value === 29, "image height");
 }
 assert(work.includes("https://weaverfineart.com/works/floyd-hopper-late-evening/"), "work canonical");
 assert(work.includes("name=\"inquiry\""), "inquiry form");
 assert(work.includes("data-netlify=\"true\""), "inquiry netlify form");
-assert(work.includes("Photograph to come"), "placeholder caption");
-assert(work.includes("$1,200"), "Late Evening shows $1,200");
+assert(!work.includes("Photograph to come"), "real photographs, no placeholder caption");
+assert(work.includes("$1,500") && !work.includes("$1,200"), "Late Evening shows $1,500");
 assert(!work.includes("$600"), "verso $600 notation removed");
-assert(work.includes("20½ × 29½ in"), "image size display");
+assert(work.includes("20 × 29 in"), "image size display");
 assert(work.includes("31½ × 39½ in"), "frame size display");
 
 const personLd = jsonLd(artist).find((entry) => entry["@type"] === "Person");
@@ -89,6 +89,7 @@ assert(about.includes("Chris Weaver"), "about dealer");
 assert(about.includes("by appointment"), "about appointment");
 assert(sold.includes("Sold archive"), "sold page");
 assert(worksIndex.includes("name=\"price\""), "price filter");
+assert(worksIndex.includes("value=\"on-request\""), "price on request filter option");
 assert(robots.includes("https://weaverfineart.com/sitemap-index.xml"), "robots sitemap");
 
 const htmlFiles = [];
@@ -105,6 +106,7 @@ for (const file of htmlFiles) {
   const html = readFileSync(file, "utf8");
   assert(!banned.test(html), `banned wording in ${file}`);
   assert(!html.includes("TODO"), `TODO leaked into ${file}`);
+  assert(!html.includes("$1,200"), `stale $1,200 price in ${file}`);
 }
 
 if (failures.length > 0) {

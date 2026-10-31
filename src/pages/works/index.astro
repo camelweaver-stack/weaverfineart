@@ -1,0 +1,33 @@
+---
+import Base from "../../layouts/Base.astro";
+import WorkFilters from "../../components/WorkFilters.astro";
+import { getCatalog, isListed } from "../../lib/catalog";
+
+const { works } = await getCatalog();
+const listed = works.filter(isListed);
+const title = "Available Works | Weaver Fine Art";
+const description =
+  "Paintings currently available or on hold at Weaver Fine Art in Aledo, Texas. Prices are shown. Filter by artist, region, medium, price, and size.";
+---
+
+<Base title={title} description={description}>
+  <div class="wrap">
+    <header class="page-intro">
+      <p class="kicker">Inventory</p>
+      <h1>Available works</h1>
+      <p>
+        Each listing gives the medium, the image and frame sizes, the condition, and a price or the word Inquire.
+        Works on hold stay visible and are marked. Sold works move to the <a href="/sold/">archive</a> and keep the same page address.
+      </p>
+    </header>
+    {
+      listed.length === 0 ? (
+        <p class="empty-note">
+          Nothing is available or on hold right now. Sold works remain in the <a href="/sold/">archive</a>.
+        </p>
+      ) : (
+        <WorkFilters works={listed} />
+      )
+    }
+  </div>
+</Base>

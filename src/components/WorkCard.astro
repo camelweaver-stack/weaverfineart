@@ -1,0 +1,48 @@
+---
+import { Picture } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { formatPrice, formatSize, priceBand, sizeBand, statusLabel } from "../lib/format";
+
+interface Props {
+  work: CollectionEntry<"works">;
+  heading?: "h2" | "h3";
+}
+
+const { work, heading = "h2" } = Astro.props;
+const Heading = heading;
+const image = work.data.images[0];
+const widths = [400, 640, 864].filter((width) => width <= image.file.width);
+const srcWidths = widths.length > 0 ? widths : [image.file.width];
+---
+
+<article
+  class="card"
+  data-artist={work.data.artist}
+  data-region={work.data.region}
+  data-medium={work.data.medium}
+  data-price-band={priceBand(work.data.price)}
+  data-size={sizeBand(work.data.imageWidthIn, work.data.imageHeightIn)}
+  data-status={work.data.status}
+>
+  <a class="card-link" href={`/works/${work.id}/`}>
+    <span class="card-media">
+      <Picture
+        src={image.file}
+        alt={image.alt}
+        formats={["avif", "webp"]}
+        widths={srcWidths}
+        sizes="(min-width: 1100px) 22rem, (min-width: 640px) 46vw, 100vw"
+        loading="lazy"
+      />
+    </span>
+    <p class="card-artist">{work.data.artist}</p>
+    <Heading class="card-title">{work.data.title}</Heading>
+    <p class="card-meta">
+      {work.data.medium} · {formatSize(work.data.imageWidthIn, work.data.imageHeightIn)}
+      {work.data.year ? ` · ${work.data.year}` : ""}
+    </p>
+    {image.placeholder && <p class="card-note">Photograph to come</p>}
+    <p class="card-price">{formatPrice(work.data.price, work.data.status)}</p>
+    {work.data.status !== "available" && <p class="card-status">{statusLabel(work.data.status)}</p>}
+  </a>
+</article>

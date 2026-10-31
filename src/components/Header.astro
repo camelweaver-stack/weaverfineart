@@ -1,0 +1,36 @@
+---
+const path = Astro.url.pathname;
+
+const links = [
+  { href: "/works/", label: "Available" },
+  { href: "/artists/", label: "Artists" },
+  { href: "/sold/", label: "Sold" },
+  { href: "/sell/", label: "Sell" },
+  { href: "/want-list/", label: "Want list" },
+  { href: "/about/", label: "About" },
+  { href: "/contact/", label: "Contact" },
+];
+
+function current(href: string): boolean {
+  if (href === "/") return path === "/";
+  return path === href || path.startsWith(href);
+}
+---
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/">
+      <span class="wordmark-name">Weaver Fine Art</span>
+      <span class="wordmark-place">Aledo, Texas</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={current(link.href) ? "page" : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

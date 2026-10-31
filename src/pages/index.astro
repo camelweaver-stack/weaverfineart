@@ -1,0 +1,110 @@
+---
+import { Picture } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import WorkCard from "../components/WorkCard.astro";
+import { getCatalog, isListed } from "../lib/catalog";
+import { formatPrice, formatSize } from "../lib/format";
+import { galleryJsonLd } from "../lib/schema";
+import { SITE } from "../lib/site";
+
+const { works, artistById } = await getCatalog();
+const listed = works.filter(isListed);
+const lead = listed.find((work) => work.data.featured) ?? listed[0];
+const rest = lead ? listed.filter((work) => work.id !== lead.id) : [];
+const leadArtist = lead ? artistById.get(lead.data.artistSlug) : undefined;
+const leadImage = lead?.data.images[0];
+const leadWidths = leadImage ? [480, 720, 864].filter((width) => width <= leadImage.file.width) : [];
+
+const title = "Weaver Fine Art | Historic American Regional Art, Aledo, Texas";
+const description = SITE.description;
+---
+
+<Base title={title} description={description} jsonLd={galleryJsonLd()}>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">Aledo, Texas · By appointment</p>
+        <h1>Historic American regional art, with the facts in view.</h1>
+        <p class="lede">
+          Weaver Fine Art handles Indiana regionalists, including
+          <a href="/artists/floyd-d-hopper/">Floyd D. Hopper</a>, and Texas artists. Prices are on the page.
+          When a price is not set, the listing says Inquire. Sold works stay up.
+        </p>
+        <p><a class="button" href="/works/">See available works</a></p>
+      </div>
+      {
+        lead && leadImage && leadArtist && (
+          <a class="card-link" href={`/works/${lead.id}/`}>
+            <span class="card-media">
+              <Picture
+                src={leadImage.file}
+                alt={leadImage.alt}
+                formats={["avif", "webp"]}
+                widths={leadWidths.length > 0 ? leadWidths : [leadImage.file.width]}
+                sizes="(min-width: 800px) 36vw, 100vw"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </span>
+            <p class="card-artist">Featured · {lead.data.artist}</p>
+            <h2 class="card-title">{lead.data.title}</h2>
+            <p class="card-meta">
+              {lead.data.medium} · {formatSize(lead.data.imageWidthIn, lead.data.imageHeightIn)}
+            </p>
+            {leadImage.placeholder && <p class="card-note">Photograph to come</p>}
+            <p class="card-price">{formatPrice(lead.data.price, lead.data.status)}</p>
+          </a>
+        )
+      }
+    </section>
+
+    <section class="section" aria-labelledby="expect-heading">
+      <h2 id="expect-heading">What a listing includes</h2>
+      <ul class="points">
+        <li>
+          <h3>A price you can see</h3>
+          <p>Available works show a dollar figure or the word Inquire. Nothing is hidden behind a phone call just to learn the range.</p>
+        </li>
+        <li>
+          <h3>The object, written down</h3>
+          <p>Medium, image size, frame size, condition, signature, and provenance. If a fact is not known yet, the page says so.</p>
+        </li>
+        <li>
+          <h3>A sold archive that stays</h3>
+          <p>
+            When a picture sells, its page remains in the <a href="/sold/">sold archive</a>. The address does not change.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    {
+      rest.length > 0 && (
+        <section class="section" aria-labelledby="also-heading">
+          <h2 id="also-heading">Also available</h2>
+          <div class:list={["card-grid", rest.length > 2 ? "cols-3" : "cols-2"]}>
+            {rest.map((work) => (
+              <WorkCard work={work} heading="h3" />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="section" aria-labelledby="next-heading">
+      <h2 id="next-heading" class="visually-hidden">Next steps</h2>
+      <div class="cta-grid">
+        <article class="cta-panel">
+          <h3>Tell us what you are looking for</h3>
+          <p>Artist, budget, size, and subject. We write when a work fits. Joining the list does not obligate you to buy.</p>
+          <a class="button" href="/want-list/">Join the want list</a>
+        </article>
+        <article class="cta-panel">
+          <h3>Sell or consign to us</h3>
+          <p>Indiana regionalists, Texas artists, and related American regional pictures. Send the front, the back, and the signature.</p>
+          <a class="button button-secondary" href="/sell/">Offer a work</a>
+        </article>
+      </div>
+    </section>
+  </div>
+</Base>

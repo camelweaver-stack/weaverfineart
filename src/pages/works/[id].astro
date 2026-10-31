@@ -1,0 +1,208 @@
+---
+import { Picture, getImage } from "astro:assets";
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Honeypot from "../../components/Honeypot.astro";
+import { getCatalog } from "../../lib/catalog";
+import { formatPrice, formatSize, formatSoldOn, statusLabel } from "../../lib/format";
+import { artworkJsonLd, breadcrumbJsonLd, workDescription } from "../../lib/schema";
+import { SITE } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const { works, artistById } = await getCatalog();
+  return works.map((work) => ({
+    params: { id: work.id },
+    props: { work, artist: artistById.get(work.data.artistSlug)! },
+  }));
+}
+
+const { work, artist } = Astro.props;
+const { Content } = await render(work);
+const primary = work.data.images[0];
+const og = await getImage({
+  src: primary.file,
+  width: Math.min(1200, primary.file.width),
+  format: "jpg",
+  quality: 80,
+});
+const title = `${work.data.title} by ${work.data.artist} | Weaver Fine Art`;
+const description = workDescription(work);
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: work.data.status === "sold" ? "Sold" : "Available works", path: work.data.status === "sold" ? "/sold/" : "/works/" },
+  { name: work.data.title, path: `/works/${work.id}/` },
+];
+const jsonLd = [
+  artworkJsonLd(work, artist, new URL(og.src, SITE.url).href),
+  breadcrumbJsonLd(crumbs),
+];
+const hasNote = (work.body ?? "").trim().length > 0;
+---
+
+<Base
+  title={title}
+  description={description}
+  image={og.src}
+  imageAlt={primary.alt}
+  imageWidth={og.attributes.width}
+  imageHeight={og.attributes.height}
+  jsonLd={jsonLd}
+>
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: "/" },
+      {
+        name: work.data.status === "sold" ? "Sold" : "Available works",
+        href: work.data.status === "sold" ? "/sold/" : "/works/",
+      },
+      { name: work.data.title },
+    ]}
+  />
+  <article class="wrap work-layout">
+    <div>
+      {
+        work.data.images.map((image, index) => {
+          const widths = [480, 720, 864, 1200].filter((width) => width <= image.file.width);
+          return (
+            <figure class="work-figure">
+              <Picture
+                src={image.file}
+                alt={image.alt}
+                formats={["avif", "webp"]}
+                widths={widths.length > 0 ? widths : [image.file.width]}
+                sizes="(min-width: 800px) 56vw, 100vw"
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchpriority={index === 0 ? "high" : "auto"}
+              />
+              {image.caption && <figcaption>{image.caption}</figcaption>}
+            </figure>
+          );
+        })
+      }
+    </div>
+    <div>
+      {work.data.status === "sold" && <p class="banner">Sold. This page stays up as a record of the work.</p>}
+      {work.data.status === "hold" && <p class="banner">On hold. Ask to be contacted if it becomes available.</p>}
+      <p class="kicker">
+        <a href={`/artists/${artist.id}/`}>{work.data.artist}</a>
+        {" · "}
+        {artist.data.lifeDates}
+      </p>
+      <h1>{work.data.title}</h1>
+      <p class="asking">{formatPrice(work.data.price, work.data.status)}</p>
+      {work.data.soldOn && <p class="asking-note">Sold {formatSoldOn(work.data.soldOn)}.</p>}
+      <dl class="specs">
+        <div>
+          <dt>Status</dt>
+          <dd>{statusLabel(work.data.status)}</dd>
+        </div>
+        <div>
+          <dt>Artist</dt>
+          <dd><a href={`/artists/${artist.id}/`}>{work.data.artist}</a></dd>
+        </div>
+        <div>
+          <dt>Date</dt>
+          <dd>{work.data.year ?? "Not recorded"}</dd>
+        </div>
+        <div>
+          <dt>Medium</dt>
+          <dd>{work.data.medium}</dd>
+        </div>
+        <div>
+          <dt>Region</dt>
+          <dd>{work.data.region}</dd>
+        </div>
+        <div>
+          <dt>Image size</dt>
+          <dd>{formatSize(work.data.imageWidthIn, work.data.imageHeightIn)}</dd>
+        </div>
+        <div>
+          <dt>Frame size</dt>
+          <dd>
+            {
+              work.data.frameWidthIn && work.data.frameHeightIn
+                ? formatSize(work.data.frameWidthIn, work.data.frameHeightIn)
+                : "Unframed"
+            }
+          </dd>
+        </div>
+        <div>
+          <dt>Signature</dt>
+          <dd>{work.data.signature}</dd>
+        </div>
+        <div>
+          <dt>Condition</dt>
+          <dd>{work.data.condition}</dd>
+        </div>
+      </dl>
+
+      <section class="prose" aria-labelledby="provenance-heading">
+        <h2 id="provenance-heading">Provenance and inscriptions</h2>
+        {work.data.verso && <p>{work.data.verso}</p>}
+        <p>{work.data.provenance}</p>
+      </section>
+
+      {hasNote && (
+        <div class="prose catalog-note">
+          <Content />
+        </div>
+      )}
+
+      {
+        work.data.status === "sold" ? (
+          <p class="inquiry">
+            Looking for a related picture?
+            <a href={`/want-list/?artist=${encodeURIComponent(work.data.artist)}`}>Join the want list</a>.
+          </p>
+        ) : (
+          <form
+            class="inquiry"
+            name="inquiry"
+            method="POST"
+            action="/thank-you/"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="inquiry" />
+            <input type="hidden" name="subject" value={`Inquiry: ${work.data.title} by ${work.data.artist}`} />
+            <input type="hidden" name="artwork" value={work.data.title} />
+            <input type="hidden" name="artist" value={work.data.artist} />
+            <Honeypot />
+            <h2>Inquire, hold, or purchase</h2>
+            <p class="help">
+              A request does not complete a sale or a hold until Weaver Fine Art confirms by email.
+            </p>
+            <div class="form-grid two">
+              <div class="field">
+                <label for="inquiry-name">Name</label>
+                <input id="inquiry-name" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="inquiry-email">Email</label>
+                <input id="inquiry-email" name="email" type="email" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="inquiry-phone">Phone <span class="help">(optional)</span></label>
+              <input id="inquiry-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="inquiry-request">Request</label>
+              <select id="inquiry-request" name="request" required>
+                <option value="Inquire about this work">Inquire about this work</option>
+                <option value="Request a hold">Request a hold</option>
+                <option value="Request to purchase">Request to purchase</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="inquiry-message">Message <span class="help">(optional)</span></label>
+              <textarea id="inquiry-message" name="message"></textarea>
+            </div>
+            <button class="button" type="submit">Send inquiry</button>
+          </form>
+        )
+      }
+    </div>
+  </article>
+</Base>

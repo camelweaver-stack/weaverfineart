@@ -1,0 +1,77 @@
+---
+import Base from "../layouts/Base.astro";
+import Honeypot from "../components/Honeypot.astro";
+
+const title = "Want List | Weaver Fine Art";
+const description =
+  "Tell Weaver Fine Art which artist, budget, size, and subject you want. The gallery writes when a historic American regional work fits.";
+---
+
+<Base title={title} description={description}>
+  <div class="wrap">
+    <header class="page-intro">
+      <p class="kicker">Collectors</p>
+      <h1>Want list</h1>
+      <p>
+        Name the artist, the budget, the size, and the kind of subject you want. When a work fits, we write. Joining
+        the list does not obligate you to buy, and it does not reserve anything.
+      </p>
+    </header>
+    <form
+      class="form-panel"
+      name="want-list"
+      method="POST"
+      action="/thank-you/"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="want-list" />
+      <input type="hidden" name="subject" value="Want list signup" />
+      <Honeypot />
+      <div class="form-grid two">
+        <div class="field">
+          <label for="want-name">Name</label>
+          <input id="want-name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="want-email">Email</label>
+          <input id="want-email" name="email" type="email" autocomplete="email" required />
+        </div>
+      </div>
+      <div class="field">
+        <label for="want-phone">Phone <span class="help">(optional)</span></label>
+        <input id="want-phone" name="phone" type="tel" autocomplete="tel" />
+      </div>
+      <div class="field">
+        <label for="want-artist">Artist</label>
+        <input id="want-artist" name="artist" type="text" required />
+        <p class="help">One name is enough. Add others in the notes if you are looking at several.</p>
+      </div>
+      <div class="form-grid two">
+        <div class="field">
+          <label for="want-budget">Budget</label>
+          <input id="want-budget" name="budget" type="text" placeholder="Up to $2,000, or flexible" />
+        </div>
+        <div class="field">
+          <label for="want-size">Size</label>
+          <input id="want-size" name="size" type="text" placeholder="Around 20 × 30 inches" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="want-subject">Subject</label>
+        <textarea id="want-subject" name="subject-preferences" placeholder="Town, farm, woodland, a particular county…"></textarea>
+      </div>
+      <div class="field">
+        <label for="want-notes">Notes <span class="help">(optional)</span></label>
+        <textarea id="want-notes" name="notes"></textarea>
+      </div>
+      <div class="field checkbox">
+        <input id="want-updates" name="updates" type="checkbox" value="yes" />
+        <label for="want-updates">You may email me when a work fits this list. I can ask you to stop at any time.</label>
+      </div>
+      <button class="button" type="submit">Join the want list</button>
+    </form>
+  </div>
+</Base>
+
+<script is:inline src="/site.js" defer></script>

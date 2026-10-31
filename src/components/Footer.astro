@@ -1,0 +1,29 @@
+---
+import { SITE } from "../lib/site";
+
+const links = [
+  { href: "/works/", label: "Available works" },
+  { href: "/artists/", label: "Artists" },
+  { href: "/sold/", label: "Sold archive" },
+  { href: "/sell/", label: "Sell or consign" },
+  { href: "/want-list/", label: "Want list" },
+  { href: "/contact/", label: "Contact" },
+];
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-name">{SITE.name}</p>
+      <p>
+        {SITE.locality}, Texas<br />
+        By appointment<br />
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </p>
+      <p class="legal">Site text © {new Date().getFullYear()} {SITE.name}.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+  </div>
+</footer>

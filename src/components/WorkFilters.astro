@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from "astro:content";
+import WorkCard from "./WorkCard.astro";
+
+interface Props {
+  works: CollectionEntry<"works">[];
+  context?: "available" | "sold";
+}
+
+const { works, context = "available" } = Astro.props;
+const artists = [...new Set(works.map((work) => work.data.artist))].sort((a, b) => a.localeCompare(b, "en"));
+const mediums = [...new Set(works.map((work) => work.data.medium))].sort((a, b) => a.localeCompare(b, "en"));
+const regions = ["Indiana", "Texas", "Midwest", "Other"].filter((region) =>
+  works.some((work) => work.data.region === region),
+);
+const inquireLabel = context === "sold" ? "Price not published" : "Inquire";
+const countLabel = works.length === 1 ? "1 work" : `${works.length} works`;
+---
+
+<form class="filters" id="work-filters">
+  <p class="kicker span-all">Filter the list</p>
+  <div class="field">
+    <label for="filter-artist">Artist</label>
+    <select id="filter-artist" name="artist">
+      <option value="">All artists</option>
+      {artists.map((artist) => <option value={artist}>{artist}</option>)}
+    </select>
+  </div>
+  <div class="field">
+    <label for="filter-region">Region</label>
+    <select id="filter-region" name="region">
+      <option value="">All regions</option>
+      {regions.map((region) => <option value={region}>{region}</option>)}
+    </select>
+  </div>
+  <div class="field">
+    <label for="filter-medium">Medium</label>
+    <select id="filter-medium" name="medium">
+      <option value="">All mediums</option>
+      {mediums.map((medium) => <option value={medium}>{medium}</option>)}
+    </select>
+  </div>
+  <div class="field">
+    <label for="filter-price">Price</label>
+    <select id="filter-price" name="price">
+      <option value="">Any price</option>
+      <option value="under-1000">Under $1,000</option>
+      <option value="1000-5000">$1,000–$5,000</option>
+      <option value="5000-15000">$5,000–$15,000</option>
+      <option value="over-15000">Over $15,000</option>
+      <option value="inquire">{inquireLabel}</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="filter-size">Image size</label>
+    <select id="filter-size" name="size">
+      <option value="">Any size</option>
+      <option value="small">Small, under 16 in</option>
+      <option value="medium">Medium, 16–30 in</option>
+      <option value="large">Large, over 30 in</option>
+    </select>
+  </div>
+  {
+    context === "available" && (
+      <div class="field">
+        <label for="filter-status">Status</label>
+        <select id="filter-status" name="status">
+          <option value="">Available and on hold</option>
+          <option value="available">Available</option>
+          <option value="hold">On hold</option>
+        </select>
+      </div>
+    )
+  }
+  <div class="filter-actions">
+    <button class="button button-secondary" type="reset">Clear filters</button>
+    <p class="work-count" id="work-count">{countLabel}</p>
+  </div>
+</form>
+<p class="filter-empty" id="filter-empty" hidden>No works match these filters.</p>
+<div class:list={["card-grid", works.length > 2 ? "cols-3" : "cols-2"]} id="work-list">
+  {works.map((work) => <WorkCard work={work} />)}
+</div>
+
+<script is:inline src="/site.js" defer></script>

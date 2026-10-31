@@ -1,0 +1,56 @@
+---
+import Base from "../layouts/Base.astro";
+import Honeypot from "../components/Honeypot.astro";
+import { galleryJsonLd } from "../lib/schema";
+import { SITE } from "../lib/site";
+
+const title = "Contact | Weaver Fine Art";
+const description =
+  "Write to Weaver Fine Art in Aledo, Texas. Inquiries about works, visits by appointment, and general questions go to camelweaver@gmail.com.";
+---
+
+<Base title={title} description={description} jsonLd={galleryJsonLd()}>
+  <div class="wrap">
+    <header class="page-intro">
+      <p class="kicker">Aledo, Texas · By appointment</p>
+      <h1>Contact</h1>
+      <p>
+        Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>, or use the form. Visits are by appointment with
+        {SITE.dealer}.
+      </p>
+    </header>
+    <form
+      class="form-panel"
+      name="contact"
+      method="POST"
+      action="/thank-you/"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="subject" value="Contact from weaverfineart.com" />
+      <Honeypot />
+      <div class="form-grid two">
+        <div class="field">
+          <label for="contact-name">Name</label>
+          <input id="contact-name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="contact-email">Email</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" required />
+        </div>
+      </div>
+      <div class="field">
+        <label for="contact-phone">Phone <span class="help">(optional)</span></label>
+        <input id="contact-phone" name="phone" type="tel" autocomplete="tel" />
+      </div>
+      <div class="field">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" required></textarea>
+      </div>
+      <button class="button" type="submit">Send</button>
+    </form>
+  </div>
+</Base>
+
+<script is:inline src="/site.js" defer></script>

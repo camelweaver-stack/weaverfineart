@@ -91,6 +91,9 @@ const hasNote = (work.body ?? "").trim().length > 0;
       </p>
       <h1>{work.data.title}</h1>
       <p class="asking">{formatPrice(work.data.price, work.data.status)}</p>
+      {work.data.status !== "sold" && typeof work.data.price !== "number" && (
+        <p class="asking-note">This work is on consignment. <a href="#inquiry">Inquire about this work</a> for the price.</p>
+      )}
       {work.data.soldOn && <p class="asking-note">Sold {formatSoldOn(work.data.soldOn)}.</p>}
       <dl class="specs">
         <div>
@@ -157,6 +160,7 @@ const hasNote = (work.body ?? "").trim().length > 0;
           </p>
         ) : (
           <form
+            id="inquiry"
             class="inquiry"
             name="inquiry"
             method="POST"

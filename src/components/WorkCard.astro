@@ -20,7 +20,7 @@ const srcWidths = widths.length > 0 ? widths : [image.file.width];
   data-artist={work.data.artist}
   data-region={work.data.region}
   data-medium={work.data.medium}
-  data-price-band={priceBand(work.data.price)}
+  data-price-band={priceBand(work.data.price, work.data.status)}
   data-size={sizeBand(work.data.imageWidthIn, work.data.imageHeightIn)}
   data-status={work.data.status}
 >

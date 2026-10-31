@@ -7,7 +7,7 @@ const { works } = await getCatalog();
 const listed = works.filter(isListed);
 const title = "Available Works | Weaver Fine Art";
 const description =
-  "Paintings currently available or on hold at Weaver Fine Art in Aledo, Texas. Prices are shown. Filter by artist, region, medium, price, and size.";
+  "Paintings currently available or on hold at Weaver Fine Art in Aledo, Texas. Works we own show their price; consigned works may be priced on request. Filter by artist, region, medium, price, and size.";
 ---
 
 <Base title={title} description={description}>
@@ -16,7 +16,7 @@ const description =
       <p class="kicker">Inventory</p>
       <h1>Available works</h1>
       <p>
-        Each listing gives the medium, the image and frame sizes, the condition, and its price.
+        Each listing gives the medium, the image and frame sizes, the condition, and its price. Works the gallery owns always show a price; a consigned work may say “Price on request,” and the inquiry form on its page will get you the figure.
         Works on hold stay visible and are marked. Sold works move to the <a href="/sold/">archive</a> and keep the same page address.
       </p>
     </header>

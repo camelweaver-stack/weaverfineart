@@ -6,7 +6,7 @@ The public address of the site is [https://weaverfineart.com](https://weaverfine
 
 ## Add a photograph of a work
 
-The first listing, *Late Evening*, uses a stand-in card that says “Photograph to come.” That card is not a picture of the watercolor. Replace it before the work is shown to collectors.
+A new listing may start with a stand-in card that says “Photograph to come.” That card is not a picture of the work. Replace it before the work is shown to collectors. (*Late Evening* now has real photographs.)
 
 1. Photograph the work straight on. Include the whole sheet. A second photo of the signature, and one of the back, are worth having.
 2. Save the pictures as JPG or PNG. A long side of about 2,000 to 3,000 pixels is enough. The site makes the smaller copies that phones and laptops actually download. A very small snapshot will look soft, and a bigger file is fine.
@@ -56,7 +56,8 @@ The artist must already have a file in `src/content/artists/`. The artwork’s `
 | `signature` | Where it is signed, for example `Signed lower right.` |
 | `verso` | Inscriptions or labels on the back. Leave the line out if there is nothing to say. |
 | `provenance` | Previous owners and exhibitions you can support. If you do not know, write that earlier ownership has not yet been recorded. Do not invent an owner. |
-| `price` | A plain number, such as `2400`. Do not type a dollar sign. Every available or on-hold work must have a number; the site shows it as a dollar price. Only a sold work may use `Inquire`, which is labeled “Price not published.” |
+| `price` | A plain number, such as `2400`. Do not type a dollar sign. Every available or on-hold work the gallery owns must have a number; the site shows it as a dollar price. A consigned work may use `Inquire`; it is labeled “Price on request” with a link to the inquiry form. A sold work may use `Inquire`, labeled “Price not published.” |
+| `ownership` | `owned` (the default) or `consigned`. Works we own must show a price. Consigned works (we have access but do not own) may be priced on request. |
 | `status` | Exactly one of: `available`, `hold`, `sold`. |
 | `soldOn` | For a sold work, the day it sold, as `YYYY-MM-DD`. Leave it out if you do not want a date on the page. |
 | `featured` | `true` or `false`. One featured available work is shown large on the home page. Do not feature a sold work. |

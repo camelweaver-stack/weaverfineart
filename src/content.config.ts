@@ -37,6 +37,7 @@ const works = defineCollection({
         verso: z.string().optional(),
         provenance: z.string().min(1),
         price: priceField,
+        ownership: z.enum(["owned", "consigned"]).default("owned"),
         status: z.enum(["available", "hold", "sold"]),
         soldOn: dateField.optional(),
         featured: z.boolean().default(false),
@@ -54,11 +55,11 @@ const works = defineCollection({
           .min(1),
       })
       .superRefine((data, ctx) => {
-        if (data.status !== "sold" && typeof data.price !== "number") {
+        if (data.status !== "sold" && data.ownership === "owned" && typeof data.price !== "number") {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
             path: ["price"],
-            message: "Available and on-hold works must have a dollar price. Only a sold work may leave its price unpublished.",
+            message: "Available and on-hold works the gallery owns must have a dollar price. Only a sold work or a consigned work may leave its price unpublished.",
           });
         }
         const hasWidth = data.frameWidthIn != null;

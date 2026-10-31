@@ -54,6 +54,13 @@ const works = defineCollection({
           .min(1),
       })
       .superRefine((data, ctx) => {
+        if (data.status !== "sold" && typeof data.price !== "number") {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["price"],
+            message: "Available and on-hold works must have a dollar price. Only a sold work may leave its price unpublished.",
+          });
+        }
         const hasWidth = data.frameWidthIn != null;
         const hasHeight = data.frameHeightIn != null;
         if (hasWidth !== hasHeight) {

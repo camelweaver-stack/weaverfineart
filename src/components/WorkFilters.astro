@@ -13,7 +13,6 @@ const mediums = [...new Set(works.map((work) => work.data.medium))].sort((a, b) 
 const regions = ["Indiana", "Texas", "Midwest", "Other"].filter((region) =>
   works.some((work) => work.data.region === region),
 );
-const inquireLabel = context === "sold" ? "Price not published" : "Inquire";
 const countLabel = works.length === 1 ? "1 work" : `${works.length} works`;
 ---
 
@@ -48,7 +47,7 @@ const countLabel = works.length === 1 ? "1 work" : `${works.length} works`;
       <option value="1000-5000">$1,000–$5,000</option>
       <option value="5000-15000">$5,000–$15,000</option>
       <option value="over-15000">Over $15,000</option>
-      <option value="inquire">{inquireLabel}</option>
+      {context === "sold" && <option value="inquire">Price not published</option>}
     </select>
   </div>
   <div class="field">

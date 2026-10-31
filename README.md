@@ -56,7 +56,7 @@ The artist must already have a file in `src/content/artists/`. The artwork’s `
 | `signature` | Where it is signed, for example `Signed lower right.` |
 | `verso` | Inscriptions or labels on the back. Leave the line out if there is nothing to say. |
 | `provenance` | Previous owners and exhibitions you can support. If you do not know, write that earlier ownership has not yet been recorded. Do not invent an owner. |
-| `price` | A plain number, such as `2400`, or the word `Inquire`. Do not type a dollar sign. A number is shown on the page. `Inquire` is shown when you are not ready to publish a figure. |
+| `price` | A plain number, such as `2400`. Do not type a dollar sign. Every available or on-hold work must have a number; the site shows it as a dollar price. Only a sold work may use `Inquire`, which is labeled “Price not published.” |
 | `status` | Exactly one of: `available`, `hold`, `sold`. |
 | `soldOn` | For a sold work, the day it sold, as `YYYY-MM-DD`. Leave it out if you do not want a date on the page. |
 | `featured` | `true` or `false`. One featured available work is shown large on the home page. Do not feature a sold work. |
@@ -66,7 +66,7 @@ The artist must already have a file in `src/content/artists/`. The artwork’s `
 
 Anything you type below the `---` line is optional catalog text. Most works do not need it. The structured fields already print the size, condition, and provenance.
 
-A price written on the back of a picture is not the asking price. Record it under `verso`. Set `price` to the figure you are actually asking, or to `Inquire`.
+A price written on the back of a picture is not the asking price. Record it under `verso`. Set `price` to the figure you are actually asking.
 
 ### Mark a work sold
 
@@ -160,7 +160,7 @@ Then open `http://localhost:4321`. Stop it with Control-C.
 
 Filters only narrow the list while someone is looking at it. Every work still has its own page. Search engines use that page.
 
-Size filters use the longer side of the image, not the frame: under 16 inches, 16 to 30 inches, or over 30 inches. Price filters use the number you typed. `Inquire` is its own choice.
+Size filters use the longer side of the image, not the frame: under 16 inches, 16 to 30 inches, or over 30 inches. Price filters use the number you typed. On the sold archive, “Price not published” is its own choice.
 
 ## About the gallery page
 

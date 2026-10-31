@@ -32,7 +32,7 @@ export function formatPrice(price: Price, status?: WorkStatus): string {
       maximumFractionDigits: 0,
     }).format(price);
   }
-  return status === "sold" ? "Price not published" : "Inquire";
+  return "Price not published";
 }
 
 export function priceBand(price: Price): PriceBand {

@@ -42,12 +42,13 @@ assert(home.includes("https://weaverfineart.com/"), "home canonical host");
 assert(home.includes("ArtGallery"), "home ArtGallery schema");
 assert(home.includes("Join the want list"), "home want-list CTA");
 assert(home.includes("Offer a work"), "home sell CTA");
-assert(home.includes("Inquire"), "home shows Inquire");
+assert(home.includes("Every available work shows its price."), "home price promise");
+assert(!home.includes("word Inquire"), "home must not offer Inquire as a price");
 
 const artworkLd = jsonLd(work).find((entry) => entry["@type"] === "VisualArtwork");
 assert(artworkLd, "VisualArtwork schema missing");
 if (artworkLd) {
-  assert(artworkLd.offers && artworkLd.offers.price == null, "Inquire listing must not publish a schema price");
+  assert(artworkLd.offers && Number(artworkLd.offers.price) === 1200 && artworkLd.offers.priceCurrency === "USD", "Late Evening offer price 1200 USD");
   assert(artworkLd.offers.availability === "https://schema.org/InStock", "available work should be InStock");
   assert(artworkLd.artist.name === "Floyd D. Hopper", "artwork artist");
   assert(artworkLd.width.value === 20.5, "image width");
@@ -57,7 +58,8 @@ assert(work.includes("https://weaverfineart.com/works/floyd-hopper-late-evening/
 assert(work.includes("name=\"inquiry\""), "inquiry form");
 assert(work.includes("data-netlify=\"true\""), "inquiry netlify form");
 assert(work.includes("Photograph to come"), "placeholder caption");
-assert(work.includes("$600"), "verso price notation is recorded");
+assert(work.includes("$1,200"), "Late Evening shows $1,200");
+assert(!work.includes("$600"), "verso $600 notation removed");
 assert(work.includes("20½ × 29½ in"), "image size display");
 assert(work.includes("31½ × 39½ in"), "frame size display");
 

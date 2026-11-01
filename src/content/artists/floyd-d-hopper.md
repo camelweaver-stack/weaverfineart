@@ -1,9 +1,5 @@
 ---
-# TODO: Confirm the Indianapolis Art League years 1963–1983 against a primary source.
-# The Encyclopedia of Indianapolis (Owings, 1994; revised 2021) says he taught watercolor
-# at the Indianapolis Art League and at Cherry Hill Studio in Noblesville for more than
-# twenty years. It does not print the 1963–1983 endpoints. The public bio attributes
-# those years to the gallery's notes.
+# Teaching years 1963–1983 sourced to the Indiana Historical Society collection guide (p.2).
 #
 # TODO: Fine Estate Art says he graduated from West Baden High School and received a
 # Herron scholarship. Not published here until a second source confirms it.
@@ -39,16 +35,12 @@ sources:
     author: Frank N. Owings Jr.
     date: "1994; revised 2021"
     url: https://indyencyclopedia.org/floyd-d-hopper/
+  - title: Floyd D. Hopper Collection (collection guide)
+    publisher: Indiana Historical Society
+    url: https://indianahistory.org/wp-content/uploads/floyd-d-hopper-collection.pdf
+  - title: Floyd D. Hopper artwork and papers, L463
+    publisher: Indiana State Library
+    url: https://archives.isl.lib.in.us/repositories/2/resources/592
 ---
 
-Floyd D. Hopper was born in Martin County, Indiana, on November 1, 1909, and died on July 2, 1984. He is regarded as the dean of Indiana watercolorists.
-
-He attended the Herron School of Art in Indianapolis from 1929 to 1933, where he studied with William Forsyth, Clifton Wheeler, Paul Hadley, and Donald Mattison. Forsyth was a member of the Hoosier Group.
-
-In the 1930s and early 1940s Hopper painted Indiana in the later years of the Great Depression, working in oil, watercolor, and lithography in the American Scene manner used by regionalist painters across the Midwest. Works from those years include Thirteenth And Roosevelt (1935), A Summer Rain (1936), Red Farm (1937), Our Alley (1939), Railroad Yard (1939), and Wash Day (1940).
-
-In 1941 he joined Hetherington and Berner, a steel fabricator in Indianapolis, and later helped found the Noblesville Casting Company. He returned to painting full time in 1958.
-
-From then on he concentrated on watercolor, both as a painter and as a teacher. For more than twenty years he taught at the Indianapolis Art League and at Cherry Hill Studio in Noblesville. Gallery notes date the Art League classes to 1963–1983. His watercolors won prizes at the Hoosier Salon, the Indiana Artists Club, and the Indiana State Fair. He was elected to membership in the Indiana Academy in 1979. In 1987 the Indiana General Assembly posthumously recognized him as a major Indiana artist.
-
-Hopper's work is in private collections and in the Indianapolis Museum of Art, the Fort Wayne Museum of Art, Indiana University, Franklin College, DePauw University, Ball State University, and the Brown County Art Guild.
+Floyd D. Hopper (1909–1984) is remembered as the dean of Indiana watercolorists. Born in Martin County, Indiana, he trained at the Herron School of Art in Indianapolis under William Forsyth, Clifton Wheeler, Paul Hadley and Donald Mattison, and later studied briefly at the Pennsylvania Academy of the Fine Arts. In the 1930s he painted Depression-era Indiana in the American Scene manner, in oil, watercolor and lithography. He returned to painting full time in 1958 and gave himself to watercolor, working from his Cherry Tree Hill Studio and painting scenes he gathered on trips with his wife, Hazel, from Indiana towns and Michigan harbors to Door County and the Mediterranean. From 1963 to 1983 he taught at the Indianapolis Art League, and in those years he won more than 115 awards in 187 exhibitions. He showed in nearly every Hoosier Salon from 1935 to 1967, served as president of the Indiana Artists Club, and was elected to the Indiana Academy in 1979. His work is held by the Indianapolis Museum of Art, the Fort Wayne Museum of Art and several Indiana universities.

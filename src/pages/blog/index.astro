@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Signup from "../../components/Signup.astro";
+import { formatPostDate } from "../../lib/format-post";
+
+const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort((a, b) =>
+  b.data.pubDate.localeCompare(a.data.pubDate),
+);
+const title = "Blog | Weaver Fine Art";
+const description = "Buy Art Smart notes from Weaver Fine Art: practical guidance for collectors of historic American regional art.";
+---
+
+<Base title={title} description={description}>
+  <div class="wrap">
+    <header class="page-intro">
+      <p class="kicker">Buy Art Smart</p>
+      <h1>Blog</h1>
+    </header>
+    <ul class="post-list">
+      {
+        posts.map((post) => (
+          <li>
+            <p class="post-date">{formatPostDate(post.data.pubDate)}</p>
+            <h2><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
+            <p>{post.data.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <Signup id="blog-signup" />
+  </div>
+</Base>

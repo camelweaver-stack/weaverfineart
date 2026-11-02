@@ -109,4 +109,14 @@ const artists = defineCollection({
   }),
 });
 
-export const collections = { works, artists };
+const posts = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/posts" }),
+  schema: z.object({
+    title: z.string().min(1),
+    description: z.string().min(20),
+    pubDate: dateField,
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { works, artists, posts };

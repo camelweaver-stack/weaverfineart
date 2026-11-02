@@ -1,5 +1,6 @@
 ---
 import { SITE } from "../lib/site";
+import Signup from "./Signup.astro";
 
 const links = [
   { href: "/works/", label: "Available works" },
@@ -7,6 +8,7 @@ const links = [
   { href: "/sold/", label: "Sold archive" },
   { href: "/sell/", label: "Sell or consign" },
   { href: "/want-list/", label: "Want list" },
+  { href: "/blog/", label: "Blog" },
   { href: "/contact/", label: "Contact" },
 ];
 ---
@@ -25,5 +27,8 @@ const links = [
     <nav class="footer-nav" aria-label="Footer">
       {links.map((link) => <a href={link.href}>{link.label}</a>)}
     </nav>
+  </div>
+  <div class="wrap">
+    <Signup id="footer-signup" compact />
   </div>
 </footer>

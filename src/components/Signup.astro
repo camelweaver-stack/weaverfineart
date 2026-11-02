@@ -1,0 +1,26 @@
+---
+import { KIT_FORM_ID } from "../lib/site";
+
+interface Props {
+  id?: string;
+  compact?: boolean;
+}
+const { id = "signup", compact = false } = Astro.props;
+const action = KIT_FORM_ID ? `https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions` : "";
+---
+
+<section class:list={["signup", { "signup-compact": compact }]} aria-labelledby={`${id}-heading`}>
+  <p id={`${id}-heading`} class="signup-heading">Buy Art Smart</p>
+  <p class="signup-copy">Get Buy Art Smart notes and first look at new works. Free, unsubscribe anytime.</p>
+  {
+    action ? (
+      <form class="signup-form" action={action} method="post">
+        <label class="visually-hidden" for={`${id}-email`}>Email address</label>
+        <input id={`${id}-email`} type="email" name="email_address" autocomplete="email" placeholder="Email address" required />
+        <button class="button" type="submit">Sign up</button>
+      </form>
+    ) : (
+      <p class="signup-copy"><a href="/contact/">Ask to be added by email</a></p>
+    )
+  }
+</section>

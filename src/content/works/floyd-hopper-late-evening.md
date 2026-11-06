@@ -15,7 +15,7 @@ condition: The paper is clean and the signature is crisp. Image size is approxim
 signature: Signed lower right.
 verso: The verso carries a titled inscription.
 provenance: Earlier ownership has not yet been recorded.
-price: 1500
+price: 2000
 prominence: 1
 status: available
 ownership: owned

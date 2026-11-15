@@ -22,7 +22,7 @@ provenance: Attributed to Jean Greenleaf of Campbell, California, active in the 
 price: 500
 ownership: owned
 status: available
-prominence: 3
+prominence: 5
 featured: false
 dateAdded: 2026-11-14
 draft: true

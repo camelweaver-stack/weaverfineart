@@ -35,7 +35,7 @@ sources:
   - title: Richard Earlom
     publisher: Wikipedia
     url: https://en.wikipedia.org/wiki/Richard_Earlom
-draft: true
+draft: false
 ---
 
 Richard Earlom was born in London and baptized on 14 May 1743. He studied drawing under the painter Giovanni Battista Cipriani and taught himself mezzotint, the engraving method in which a copper plate is roughened all over and then burnished to bring up the lights. In 1765 the print publisher John Boydell employed him to draw the pictures at Houghton Hall in Norfolk, the great collection of Sir Robert Walpole, so that they could be engraved.

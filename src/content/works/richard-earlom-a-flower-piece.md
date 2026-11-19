@@ -53,7 +53,7 @@ ownership: owned
 prominence: 2
 featured: false
 dateAdded: 2026-11-09
-draft: true
+draft: false
 images:
   - file: ./earlom-flower-piece-placeholder.jpg
     alt: Placeholder card that reads "Photograph to come," for the mezzotint A Flower Piece by Richard Earlom after Jan van Huysum. This is not a photograph of the print.

@@ -17,7 +17,7 @@ provenance: Attributed to Eugene H. Dowling (1879–1961) of Portland, Oregon, o
 price: 600
 status: available
 ownership: owned
-prominence: 2
+prominence: 4
 featured: false
 dateAdded: 2026-11-09
 draft: false

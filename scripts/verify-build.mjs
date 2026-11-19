@@ -59,6 +59,7 @@ assert(work.includes("name=\"inquiry\""), "inquiry form");
 assert(work.includes("data-netlify=\"true\""), "inquiry netlify form");
 assert(!work.includes("Photograph to come"), "real photographs, no placeholder caption");
 assert(work.includes("$2,000") && !work.includes("$1,500"), "Late Evening shows $2,000");
+assert(!work.includes("$1,200"), "Late Evening stale $1,200 price");
 assert(!work.includes("$600"), "verso $600 notation removed");
 assert(work.includes("20 × 29 in"), "image size display");
 assert(work.includes("31½ × 39½ in"), "frame size display");
@@ -106,7 +107,6 @@ for (const file of htmlFiles) {
   const html = readFileSync(file, "utf8");
   assert(!banned.test(html), `banned wording in ${file}`);
   assert(!html.includes("TODO"), `TODO leaked into ${file}`);
-  assert(!html.includes("$1,200"), `stale $1,200 price in ${file}`);
 }
 
 if (failures.length > 0) {

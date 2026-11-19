@@ -14,7 +14,7 @@ signature: Signed "M BALLETTI" along the right edge; it reads vertically with th
 verso: The artist's "Made in Rome" label is on the back.
 provenance: Earlier ownership has not been recorded.
 price: 150
-prominence: 5
+prominence: 8
 status: available
 ownership: owned
 featured: false

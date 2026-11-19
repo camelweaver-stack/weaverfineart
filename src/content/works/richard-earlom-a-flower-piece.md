@@ -16,7 +16,7 @@ imageHeightIn: 21.8
 frameWidthIn: 19.5
 frameHeightIn: 25
 condition: Seen so far only in its gilt frame, under glass. The sheet has scattered foxing and light, even toning. The frame has minor edge wear and surface scuffs. A full condition report follows when the print is examined out of its frame.
-signature: Not signed by hand. Fully lettered published state, with the title, the credits to Jan van Huysum, Joseph Farington, Richard Earlom and John Boydell, Boydell's Cheapside address, the Walpole arms and the motto "Fari quae sentiat", and the publication date 25 June 1778.
+signature: Not signed by hand. Fully lettered published state. The plate reads "Published June 25th 1778 by John Boydell Engraver in Cheapside London", with the title, the credits to Jan van Huysum, Joseph Farington and "Richd. Earlom Sculpsit", and the Walpole arms and the motto "Fari quae sentiat".
 provenance: Mezzotint by Richard Earlom after Jan van Huysum's Flower Piece of 1722, drawn by Joseph Farington from the painting in Sir Robert Walpole's collection at Houghton Hall, Norfolk. Published by John Boydell and dated in the plate 25 June 1778. The painting was sold with the Houghton collection to Catherine II of Russia in 1779 and is in the State Hermitage Museum, St Petersburg. This impression is a fully lettered published state, with Boydell's Cheapside address and the Walpole arms and motto, and with later hand-coloring. No earlier owner of this sheet is recorded.
 price: 1200
 status: available
@@ -26,10 +26,18 @@ featured: false
 dateAdded: 2026-11-09
 draft: false
 images:
-  - file: ./earlom-flower-piece-placeholder.jpg
-    alt: Placeholder card that reads "Photograph to come," for the mezzotint A Flower Piece by Richard Earlom after Jan van Huysum. This is not a photograph of the print.
-    caption: Photograph to come. This stand-in is not the print.
-    placeholder: true
+  - file: ./earlom-flower-piece-front.jpg
+    alt: A Flower Piece by Richard Earlom after Jan van Huysum, a hand-colored mezzotint in a worn gilt frame, photographed straight on, with the bouquet, bird's nest, lettered title and Walpole arms.
+    caption: A Flower Piece, framed.
+    placeholder: false
+  - file: ./earlom-flower-piece-lettering.jpg
+    alt: Close-up of the lettering on A Flower Piece, with the title, the Walpole arms and motto, and the line Published June 25th 1778 by John Boydell Engraver in Cheapside London.
+    caption: The publication line and the Walpole arms.
+    placeholder: false
+  - file: ./earlom-flower-piece-sculpsit.jpg
+    alt: Close-up of the lower right margin of A Flower Piece showing the engraved credit Richd. Earlom Sculpsit.
+    caption: Richd. Earlom Sculpsit.
+    placeholder: false
 ---
 
 **A Flower Piece** is a mezzotint by Richard Earlom after Jan van Huysum, published by John Boydell for the Houghton Gallery and dated in the plate 25 June 1778. This impression is a fully lettered published state. It carries the title, the credits, Boydell's Cheapside address, and the Walpole arms with the motto *Fari quae sentiat*. The color is later hand-coloring. It is not a proof before letters, the date in the plate does not show that this sheet was pulled in 1778, and the coloring is not contemporary with the printing.
@@ -62,4 +70,4 @@ images:
 
 Intact 1788 volumes at the [Royal Academy](https://www.royalacademy.org.uk/art-artists/book/a-set-of-prints-engraved-after-the-most-capital-paintings-in-the-collection) and at [Eton](https://catalogue.etoncollege.com/B32188) still have these plates in the binding. Other sets were broken up. The Smithsonian's Marsh impressions were taken out of the volume so they could be exhibited and framed. Once extracted, sheets of this kind were often hand-colored by a later hand and put in gilt frames.
 
-**Also offered as a pair.** This print has a companion, [A Fruit Piece](/works/richard-earlom-a-fruit-piece/), whose plate is dated 1 September 1781 on the lettered impression at the MAK, Vienna. The two are offered as a pair for **$2,000**, which is $200 less than the two prints bought separately (Flower $1,200 and Fruit $1,000). To ask about the pair, use the form below and write "pair" in your message.
+**Also offered as a pair.** This print has a companion, [A Fruit Piece](/works/richard-earlom-a-fruit-piece/), lettered "Published Sept. 1st, 1781 by John Boydell Engraver in Cheapside London". The two are offered as a pair for **$2,000**, which is $200 less than the two prints bought separately (Flower $1,200 and Fruit $1,000). To ask about the pair, use the form below and write "pair" in your message.

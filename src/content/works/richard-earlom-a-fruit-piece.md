@@ -1,9 +1,9 @@
 ---
 # Story revised Nov 19, 2026 from the sourced provenance report of that date.
 # Plate, sheet, paper and frame measurements below are still the reference figures, not new measurements of this print.
-# The frame size on the page has not been remeasured. Read this sheet's publication line out of the frame. The lettered
-# impression at the MAK, Vienna, is dated 1 September 1781. Some catalogues give 1 November 1781. Do not describe the
-# sheet as a first-year pull, a proof, or contemporary color.
+# The frame size on the page has not been remeasured. The publication line on this sheet reads
+# "Published Sept. 1st, 1781 by John Boydell Engraver in Cheapside London". Some catalogues give 1 November 1781.
+# Do not describe the sheet as a first-year pull, a proof, or contemporary color.
 # Prices: Flower $1,200, Fruit $1,000, pair $2,000, set by Chris Nov 19, 2026.
 
 title: A Fruit Piece, after Jan van Huysum
@@ -17,8 +17,8 @@ imageHeightIn: 21.8
 frameWidthIn: 19.5
 frameHeightIn: 25
 condition: Seen so far only in its gold-finished frame, under glass. The sheet has visible foxing and toning across the image and the margins, heavier than on the companion Flower Piece. The frame has a chipped edge and a separating corner. A full condition report follows when the print is examined out of its frame.
-signature: Not signed by hand. Fully lettered published state, with the title, the credits to Jan van Huysum, Joseph Farington, Richard Earlom and John Boydell, Boydell's Cheapside address, and the Walpole arms and the motto "Fari quae sentiat". The plate's lettered publication line is dated 1 September 1781 on the impression at the MAK, Vienna. This sheet's own line has not yet been read out of the frame.
-provenance: Mezzotint by Richard Earlom after Jan van Huysum's Fruit Piece of 1723, drawn by Joseph Farington from the painting in Sir Robert Walpole's collection at Houghton Hall, Norfolk. Published by John Boydell. The lettered impression at the MAK, Vienna, is dated 1 September 1781. The painting was sold with the Houghton collection to Catherine II of Russia in 1779 and is in the State Hermitage Museum, St Petersburg. This impression is a fully lettered published state, with Boydell's Cheapside address and the Walpole arms and motto, and with later hand-coloring. No earlier owner of this sheet is recorded.
+signature: Not signed by hand. Fully lettered published state. This sheet reads "Published Sept. 1st, 1781 by John Boydell Engraver in Cheapside London", with the title, the credits to Jan van Huysum, Joseph Farington and "Richd. Earlom Sculpsit", and the Walpole arms and the motto "Fari quae sentiat". Some catalogues cite 1 November 1781 for other states.
+provenance: Mezzotint by Richard Earlom after Jan van Huysum's Fruit Piece of 1723, drawn by Joseph Farington from the painting in Sir Robert Walpole's collection at Houghton Hall, Norfolk. Published by John Boydell. This sheet is lettered "Published Sept. 1st, 1781 by John Boydell Engraver in Cheapside London". The painting was sold with the Houghton collection to Catherine II of Russia in 1779 and is in the State Hermitage Museum, St Petersburg. This impression is a fully lettered published state, with the Walpole arms and motto, and with later hand-coloring. No earlier owner of this sheet is recorded.
 price: 1000
 status: available
 ownership: owned
@@ -27,13 +27,21 @@ featured: false
 dateAdded: 2026-11-09
 draft: false
 images:
-  - file: ./earlom-fruit-piece-placeholder.jpg
-    alt: Placeholder card that reads "Photograph to come," for the mezzotint A Fruit Piece by Richard Earlom after Jan van Huysum. This is not a photograph of the print.
-    caption: Photograph to come. This stand-in is not the print.
-    placeholder: true
+  - file: ./earlom-fruit-piece-front.jpg
+    alt: A Fruit Piece by Richard Earlom after Jan van Huysum, a hand-colored mezzotint in a worn gilt frame, photographed straight on, with grapes, peaches and a bouquet above the lettered title and Walpole arms.
+    caption: A Fruit Piece, framed.
+    placeholder: false
+  - file: ./earlom-fruit-piece-lettering.jpg
+    alt: Close-up of the lettering on A Fruit Piece, with the title, the Walpole arms and motto, and the line Published Sept. 1st, 1781 by John Boydell Engraver in Cheapside London.
+    caption: The publication line and the Walpole arms.
+    placeholder: false
+  - file: ./earlom-fruit-piece-sculpsit.jpg
+    alt: Close-up of the lower right margin of A Fruit Piece showing the engraved credit Richd. Earlom Sculpsit.
+    caption: Richd. Earlom Sculpsit.
+    placeholder: false
 ---
 
-**A Fruit Piece** is a mezzotint by Richard Earlom after Jan van Huysum's painting of 1723, published by John Boydell for the Houghton Gallery. The lettered impression at the [MAK, Vienna](https://sammlung.mak.at/en/collect/fruechtestilleben-herausgegeben-von-john-boydell_221671), is dated 1 September 1781 and carries Boydell's Cheapside address. Some catalogues give 1 November 1781 instead. The line on this sheet has not yet been read out of the frame. This impression is a fully lettered published state, with the title, the credits, Boydell's Cheapside address, and the Walpole arms with the motto *Fari quae sentiat*. The color is later hand-coloring. It is not a proof before letters, a date of 1781 on the plate does not show that this sheet was pulled in that year, and the coloring is not contemporary with the printing.
+**A Fruit Piece** is a mezzotint by Richard Earlom after Jan van Huysum's painting of 1723, published by John Boydell for the Houghton Gallery. This sheet's own publication line reads "Published Sept. 1st, 1781 by John Boydell Engraver in Cheapside London". Some catalogues cite 1 November 1781 for other states. The [MAK, Vienna](https://sammlung.mak.at/en/collect/fruechtestilleben-herausgegeben-von-john-boydell_221671), holds a lettered impression with the same September date. This impression is a fully lettered published state, with the title, the credits, Boydell's Cheapside address, and the Walpole arms with the motto *Fari quae sentiat*. The color is later hand-coloring. It is not a proof before letters, a date of 1781 on the plate does not show that this sheet was pulled in that year, and the coloring is not contemporary with the printing.
 
 **The paintings.** Jan van Huysum painted the Flower Piece in 1722 and this Fruit Piece in 1723. Both hung in Sir Robert Walpole's collection at Houghton Hall, Norfolk, among the finest picture collections in Britain.
 

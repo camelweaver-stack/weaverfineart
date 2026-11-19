@@ -33,13 +33,13 @@
 #  9. Photographs. Replace the placeholder card with real photos (front, lettering, detail, verso, frame chip). The
 #                 ShopGoodwill photos are watermarked and must not be used. Set placeholder: false, rewrite each alt text,
 #                 delete earlom-fruit-piece-placeholder.jpg.
-# 10. Pair offer. The $1,400 pair price is written in the text below, with a link to the Flower Piece. If either print
+# 10. Pair offer. The $2,000 pair price is written in the text below, with a link to the Flower Piece. If either print
 #                 sells, edit the other's page and remove the pair paragraph.
 # 11. Prominence ladder (by price): Hopper 1, Flower 2, Fruit 3, Dowling 4, [5 reserved for Greenleaf, PR #14],
 #                 Smith 6, Byers 7, Balletti 8. Gaps are fine (the sort is numeric). PR #14 touches none of the
 #                 Smith, Byers or Balletti files, so the two PRs merge in either order. Re-check against the live files before merging.
 # 12. Run `npm run build` and `npm run verify`, then ask Chris for the OK to publish.
-# Prices: retail $650 approved by Chris Nov 9, 2026 (5:32 PM CT). Pair $1,400. Cost basis about $80.63 (half of $161.26).
+# Prices: Flower $1,200, Fruit $1,000, pair $2,000, set by Chris Nov 19, 2026. Cost basis about $80.63 (half of $161.26).
 
 title: A Fruit Piece, after Jan van Huysum
 artist: Richard Earlom
@@ -54,7 +54,7 @@ frameHeightIn: 25
 condition: Seen so far only in its gold-finished frame, under glass. The sheet has visible foxing and toning across the image and the margins, heavier than on the companion Flower Piece. The frame has a chipped edge and a separating corner. A full condition report follows when the print is examined out of its frame.
 signature: Not signed by hand. Lettered in the plate with the credits to Jan van Huysum (painter), Joseph Farington (draughtsman), Richard Earlom (engraver) and John Boydell (publisher), and a publication line dated 1781.
 provenance: Published in London by John Boydell in 1781, as part of his Houghton Gallery series of prints after the Walpole collection. The painting it reproduces hung at Houghton Hall until 1779 and is now in the State Hermitage Museum. Earlier ownership of this impression has not yet been recorded. Acquired by Weaver Fine Art in November 2026.
-price: 650
+price: 1000
 status: available
 ownership: owned
 prominence: 3
@@ -76,4 +76,4 @@ This is a **lettered impression**: it carries its title, the Walpole arms with t
 
 **The series.** Boydell began the Houghton project in the early 1770s, and the two-volume set, dedicated to Catherine II, reproduces 129 of the pictures. Its plates carry publication dates from 1774 to 1788, and this one is among the plates dated 1781. The British Museum notes that the flower and fruit pair quickly became celebrated, and that Earlom re-engraved the plates to meet demand, the second version being judged not as good as the first.
 
-**Also offered as a pair.** This print has a companion, [A Flower Piece](/works/richard-earlom-a-flower-piece/), published in 1778. The two are offered as a pair for **$1,400**, which is $50 less than the two prints bought separately ($800 and $650). To ask about the pair, use the form below and write "pair" in your message.
+**Also offered as a pair.** This print has a companion, [A Flower Piece](/works/richard-earlom-a-flower-piece/), published in 1778. The two are offered as a pair for **$2,000**, which is $200 less than the two prints bought separately (Flower $1,200 and Fruit $1,000). To ask about the pair, use the form below and write "pair" in your message.

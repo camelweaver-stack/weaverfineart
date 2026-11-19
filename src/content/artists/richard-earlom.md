@@ -42,7 +42,7 @@ sources:
 draft: false
 ---
 
-Richard Earlom scraped the mezzotints for John Boydell's Houghton Gallery, the print project after the pictures at Houghton Hall in Norfolk. The two plates after Jan van Huysum are [A Flower Piece](/works/richard-earlom-a-flower-piece/), dated in the plate 25 June 1778, and [A Fruit Piece](/works/richard-earlom-a-fruit-piece/), dated 1 September 1781 on the lettered impression at the MAK in Vienna. Joseph Farington, with others, made the drawings. Earlom engraved after those drawings.
+Richard Earlom scraped the mezzotints for John Boydell's Houghton Gallery, the print project after the pictures at Houghton Hall in Norfolk. The two plates after Jan van Huysum are [A Flower Piece](/works/richard-earlom-a-flower-piece/), lettered 25 June 1778, and [A Fruit Piece](/works/richard-earlom-a-fruit-piece/), whose own publication line reads "Published Sept. 1st, 1781 by John Boydell Engraver in Cheapside London". Some catalogues cite 1 November 1781 for other states of the Fruit Piece. Joseph Farington, with others, made the drawings. Earlom engraved after those drawings.
 
 **The paintings and the 1779 sale.** Van Huysum painted the Flower Piece in 1722 and the Fruit Piece in 1723. Both hung in Sir Robert Walpole's collection at Houghton Hall, one of the finest in Britain. In 1779 Walpole's grandson, George, 3rd Earl of Orford, sold the greater part of that collection to Catherine II of Russia. The two paintings went to St Petersburg and remain in the State Hermitage Museum. Boydell had already begun recording the collection in prints. Walpole and, after the sale, Catherine the Great are the notable historical owners of the paintings. Boydell is the publisher of the plates.
 
